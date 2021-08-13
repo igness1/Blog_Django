@@ -1,0 +1,32 @@
+{% extends "blog_app/index.html" %}
+
+{% block content %}
+{% for post in post_list %}
+        <div class="card text-center" >
+            <div class="card-body">
+                <h5 class="card-title"><b>{{ post.title }}</b></h5>
+                    <hr>
+                    <div class="date">
+                        <p>Published on:  <b>{{ post.published_date }}</b>  by <b>{{ post.author }}</b></p>
+                    </div>
+                <p class="card-text">{{ post.text }}</p>
+                <h6>Likes: {{ post.total_likes }}</h6>
+                <h6>Likes by: {{ post.who_liked }}</h6>
+                    <div class="row">
+                    <div class="col-sm" >
+
+                        <form method="post" action="{% url 'give_like' pk=post.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" name="post_id" class="btn btn-primary" value="{{ post.id }}">Like</button>
+                        </form>
+
+                    </div>
+                    <div class="col-sm" >
+                        <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-dark">Comments: {{ post.approve_comments.count }}</a>
+                    </div>
+                    </div>
+            </div>
+        </div>
+        {% endfor %}
+
+{% endblock %}
