@@ -1,9 +1,9 @@
-Aby zalogować się jako admin:
+To log in as an admin: się jako admin:
 
 login: admin
 password: very_difficult_pass
 
-Aby zalogować się jako Iga:
+To log in as Iga:
 
 login: Iga
 password: very_difficult_pass
